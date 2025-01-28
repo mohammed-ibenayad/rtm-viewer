@@ -1,0 +1,583 @@
+{
+  "timestamp": "2025-01-02T16:47:19.023Z",
+  "summary": {
+    "totalRequirements": 26,
+    "totalUserStories": 19,
+    "totalTestCases": 38,
+    "coverage": {
+      "requirements": {
+        "covered": 25,
+        "uncovered": 1,
+        "percentage": 96.15
+      },
+      "userStories": {
+        "covered": 19,
+        "uncovered": 0,
+        "percentage": 100
+      }
+    },
+    "execution": {
+      "passed": 30,
+      "failed": 5,
+      "skipped": 3,
+      "percentagePassed": 78.95
+    }
+  },
+  "coverage": {
+    "requirements": {
+      "REQ-AUTH-REDIRECT": ["TC-should redirect unauthenticated user to signin page"],
+      "REQ-AUTH-LOGIN": [
+        "TC-should redirect to the home page after login",
+        "TC-should allow a visitor to sign-up, login, and logout"
+      ],
+      "REQ-AUTH-SESSION": ["TC-should remember a user for 30 days after login"],
+      "REQ-AUTH-SIGNUP": ["TC-should allow a visitor to sign-up, login, and logout"],
+      "REQ-AUTH-VALIDATION": [
+        "TC-should display login errors",
+        "TC-should display signup errors"
+      ],
+      "REQ-AUTH-ERRORS": [
+        "TC-should error for an invalid user",
+        "TC-should error for an invalid password for existing user"
+      ],
+      "REQ-NOTIFICATION-UI": ["TC-renders an empty notifications state"],
+      "REQ-NOTIFICATION-LIKE": [
+        "TC-User A likes a transaction of User B; User B gets notification that User A liked transaction",
+        "TC-User C likes a transaction between User A and User B; User A and User B get notifications that User C liked transaction"
+      ],
+      "REQ-NOTIFICATION-READ": [
+        "TC-User A likes a transaction of User B; User B gets notification that User A liked transaction"
+      ],
+      "REQ-NOTIFICATION-MULTI": [
+        "TC-User C likes a transaction between User A and User B; User A and User B get notifications that User C liked transaction",
+        "TC-User C comments on a transaction between User A and User B; User A and B get notifications that User C commented on their transaction"
+      ],
+      "REQ-NOTIFICATION-COMMENT": [
+        "TC-User A comments on a transaction of User B; User B gets notification that User A commented on their transaction",
+        "TC-User C comments on a transaction between User A and User B; User A and B get notifications that User C commented on their transaction"
+      ],
+      "REQ-NOTIFICATION-PAYMENT": ["TC-User A sends a payment to User B"],
+      "REQ-NOTIFICATION-REQUEST": ["TC-User A sends a payment request to User C"],
+      "REQ-FEED-LAYOUT": ["TC-toggles the navigation drawer"],
+      "REQ-FEED-RENDER": ["TC-renders transactions item variations in feed"],
+      "REQ-FEED-PAGINATION": [
+        "TC-paginates public transaction feed",
+        "TC-paginates contacts transaction feed",
+        "TC-paginates personal transaction feed"
+      ],
+      "REQ-FEED-DATE-FILTER": [
+        "TC-filters public transaction feed by date range",
+        "TC-does not show public transactions for out of range date limits",
+        "TC-filters contacts transaction feed by date range",
+        "TC-does not show contacts transactions for out of range date limits",
+        "TC-filters personal transaction feed by date range",
+        "TC-does not show personal transactions for out of range date limits"
+      ],
+      "REQ-FEED-AMOUNT-FILTER": [
+        "TC-filters public transaction feed by amount range",
+        "TC-does not show public transactions for out of range amount limits",
+        "TC-filters contacts transaction feed by amount range",
+        "TC-does not show contacts transactions for out of range amount limits",
+        "TC-filters personal transaction feed by amount range",
+        "TC-does not show personal transactions for out of range amount limits"
+      ],
+      "REQ-FEED-VISIBILITY": [
+        "TC-mine feed only shows personal transactions",
+        "TC-first five items belong to contacts in public feed",
+        "TC-friends feed only shows contact transactions"
+      ],
+      "REQ-USER-SETTINGS-UI": ["TC-renders the user settings form"],
+      "REQ-USER-SETTINGS": ["TC-renders the user settings form"],
+      "REQ-USER-SETTINGS-VALIDATION": ["TC-should display user setting form errors"],
+      "REQ-FORM-VALIDATION": ["TC-should display user setting form errors"],
+      "REQ-USER-SETTINGS-UPDATE": ["TC-updates first name, last name, email and phone number"],
+      "REQ-USER-PROFILE-SAVE": ["TC-updates first name, last name, email and phone number"],
+	  "REQ-USER-PROFILE": []
+    },
+    "userStories": {
+      "US-PROFILE-MANAGEMENT": ["REQ-USER-SETTINGS", "REQ-USER-PROFILE"],
+      "US-PROFILE-VIEW": ["REQ-USER-SETTINGS-UI"],
+      "US-PROFILE-VALIDATION": ["REQ-USER-SETTINGS-VALIDATION", "REQ-FORM-VALIDATION"],
+      "US-PROFILE-EDIT": ["REQ-USER-SETTINGS-UPDATE", "REQ-USER-PROFILE-SAVE"],
+      "US-NOTIFICATION-LIKE": ["REQ-NOTIFICATION-LIKE", "REQ-NOTIFICATION-READ"],
+      "US-NOTIFICATION-LIKE-MULTI": ["REQ-NOTIFICATION-LIKE", "REQ-NOTIFICATION-MULTI"],
+      "US-NOTIFICATION-COMMENT": ["REQ-NOTIFICATION-COMMENT"],
+      "US-NOTIFICATION-COMMENT-MULTI": ["REQ-NOTIFICATION-COMMENT", "REQ-NOTIFICATION-MULTI"],
+      "US-NOTIFICATION-PAYMENT": ["REQ-NOTIFICATION-PAYMENT"],
+      "US-NOTIFICATION-REQUEST": ["REQ-NOTIFICATION-REQUEST"],
+      "US-NOTIFICATION-VIEW": ["REQ-NOTIFICATION-UI"],
+      "US-FEED-LAYOUT": ["REQ-FEED-LAYOUT"],
+      "US-FEED-RENDER": ["REQ-FEED-RENDER"],
+      "US-FEED-PAGINATION": ["REQ-FEED-PAGINATION"],
+      "US-FEED-FILTERS": ["REQ-FEED-DATE-FILTER", "REQ-FEED-AMOUNT-FILTER"],
+      "US-FEED-VISIBILITY": ["REQ-FEED-VISIBILITY"],
+      "US-AUTH-LOGIN": ["REQ-AUTH-LOGIN", "REQ-AUTH-SESSION"],
+      "US-AUTH-SIGNUP": ["REQ-AUTH-SIGNUP"],
+      "US-AUTH-VALIDATION": ["REQ-AUTH-VALIDATION", "REQ-AUTH-ERRORS"]
+    }
+  },
+  "execution": {
+    "testCases": [
+      {
+        "id": "TC-should redirect unauthenticated user to signin page",
+        "title": "should redirect unauthenticated user to signin page",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:41:32.257Z",
+        "requirements": ["REQ-AUTH-REDIRECT"],
+        "userStories": ["US-AUTH-LOGIN"],
+        "tags": ["auth", "security", "redirect", "critical-path"],
+        "description": "Validates unauthenticated users are redirected to sign-in page"
+      },
+      {
+        "id": "TC-should redirect to the home page after login",
+        "title": "should redirect to the home page after login",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:42:00.892Z",
+        "requirements": ["REQ-AUTH-LOGIN"],
+        "userStories": ["US-AUTH-LOGIN"],
+        "tags": ["auth", "login", "redirect", "critical-path"],
+        "description": "Validates successful login redirects to home page"
+      },
+      {
+        "id": "TC-should remember a user for 30 days after login",
+        "title": "should remember a user for 30 days after login",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:42:04.145Z",
+        "requirements": ["REQ-AUTH-SESSION"],
+        "userStories": ["US-AUTH-LOGIN"],
+        "tags": ["auth", "session", "remember-me", "critical-path"],
+        "description": "Validates remember me functionality maintains session for 30 days"
+      },
+      {
+        "id": "TC-should allow a visitor to sign-up, login, and logout",
+        "title": "should allow a visitor to sign-up, login, and logout",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:42:06.573Z",
+        "requirements": ["REQ-AUTH-SIGNUP", "REQ-AUTH-LOGIN"],
+        "userStories": ["US-AUTH-SIGNUP", "US-AUTH-LOGIN"],
+        "tags": ["auth", "signup", "login", "logout", "onboarding", "critical-path"],
+        "description": "Validates complete user registration and authentication flow"
+      },
+      {
+        "id": "TC-should display login errors",
+        "title": "should display login errors",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:42:14.539Z",
+        "requirements": ["REQ-AUTH-VALIDATION"],
+        "userStories": ["US-AUTH-VALIDATION"],
+        "tags": ["auth", "login", "validation", "errors"],
+        "description": "Validates login form field validation"
+      },
+      {
+        "id": "TC-should display signup errors",
+        "title": "should display signup errors",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:42:16.263Z",
+        "requirements": ["REQ-AUTH-VALIDATION"],
+        "userStories": ["US-AUTH-VALIDATION"],
+        "tags": ["auth", "signup", "validation", "errors"],
+        "description": "Validates signup form field validation"
+      },
+      {
+        "id": "TC-should error for an invalid user",
+        "title": "should error for an invalid user",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "failed",
+        "timestamp": "2025-01-02T16:42:19.913Z",
+        "requirements": ["REQ-AUTH-ERRORS"],
+        "userStories": ["US-AUTH-VALIDATION"],
+        "tags": ["auth", "login", "errors", "security"],
+        "description": "Validates error handling for invalid username"
+      },
+      {
+        "id": "TC-should error for an invalid password for existing user",
+        "title": "should error for an invalid password for existing user",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "failed",
+        "timestamp": "2025-01-02T16:42:23.282Z",
+        "requirements": ["REQ-AUTH-ERRORS"],
+        "userStories": ["US-AUTH-VALIDATION"],
+        "tags": ["auth", "login", "errors", "security"],
+        "description": "Validates error handling for invalid password"
+      },
+      {
+        "id": "TC-renders an empty notifications state",
+        "title": "renders an empty notifications state",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:43:50.777Z",
+        "requirements": ["REQ-NOTIFICATION-UI"],
+        "userStories": ["US-NOTIFICATION-VIEW"],
+        "tags": ["notifications", "ui", "empty-state"],
+        "description": "Validates empty state rendering for notifications"
+      },
+      {
+        "id": "TC-User A likes a transaction of User B; User B gets notification that User A liked transaction",
+        "title": "User A likes a transaction of User B; User B gets notification that User A liked transaction",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:43:54.818Z",
+        "requirements": ["REQ-NOTIFICATION-LIKE", "REQ-NOTIFICATION-READ"],
+        "userStories": ["US-NOTIFICATION-LIKE"],
+        "tags": ["notifications", "likes", "critical-path"],
+        "description": "Validates notification generation and reading for transaction likes"
+      },
+      {
+        "id": "TC-User C likes a transaction between User A and User B; User A and User B get notifications that User C liked transaction",
+        "title": "User C likes a transaction between User A and User B; User A and User B get notifications that User C liked transaction",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:44:05.660Z",
+        "requirements": ["REQ-NOTIFICATION-LIKE", "REQ-NOTIFICATION-MULTI"],
+        "userStories": ["US-NOTIFICATION-LIKE-MULTI"],
+        "tags": ["notifications", "likes", "multi-user"],
+        "description": "Validates multi-user notification for transaction likes"
+      },
+      {
+        "id": "TC-User A comments on a transaction of User B; User B gets notification that User A commented on their transaction",
+        "title": "User A comments on a transaction of User B; User B gets notification that User A commented on their transaction",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:44:17.631Z",
+        "requirements": ["REQ-NOTIFICATION-COMMENT"],
+        "userStories": ["US-NOTIFICATION-COMMENT"],
+        "tags": ["notifications", "comments", "critical-path"],
+        "description": "Validates notification generation for transaction comments"
+      },
+      {
+        "id": "TC-User C comments on a transaction between User A and User B; User A and B get notifications that User C commented on their transaction",
+        "title": "User C comments on a transaction between User A and User B; User A and B get notifications that User C commented on their transaction",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:44:25.832Z",
+        "requirements": ["REQ-NOTIFICATION-COMMENT", "REQ-NOTIFICATION-MULTI"],
+        "userStories": ["US-NOTIFICATION-COMMENT-MULTI"],
+        "tags": ["notifications", "comments", "multi-user"],
+        "description": "Validates multi-user notifications for transaction comments"
+      },
+      {
+        "id": "TC-User A sends a payment to User B",
+        "title": "User A sends a payment to User B",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:44:38.211Z",
+        "requirements": ["REQ-NOTIFICATION-PAYMENT"],
+        "userStories": ["US-NOTIFICATION-PAYMENT"],
+        "tags": ["notifications", "payments", "critical-path"],
+        "description": "Validates notification generation for payment transactions"
+      },
+      {
+        "id": "TC-User A sends a payment request to User C",
+        "title": "User A sends a payment request to User C",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:44:44.393Z",
+        "requirements": ["REQ-NOTIFICATION-REQUEST"],
+        "userStories": ["US-NOTIFICATION-REQUEST"],
+        "tags": ["notifications", "payment-requests", "critical-path"],
+        "description": "Validates notification generation for payment requests"
+      },
+      {
+        "id": "TC-toggles the navigation drawer",
+        "title": "toggles the navigation drawer",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:05.030Z",
+        "requirements": ["REQ-FEED-LAYOUT"],
+        "userStories": ["US-FEED-LAYOUT"],
+        "tags": ["layout", "responsive", "navigation"],
+        "description": "Validates responsive behavior of navigation drawer"
+      },
+      {
+        "id": "TC-renders transactions item variations in feed",
+        "title": "renders transactions item variations in feed",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:08.027Z",
+        "requirements": ["REQ-FEED-RENDER"],
+        "userStories": ["US-FEED-RENDER"],
+        "tags": ["rendering", "transactions", "critical-path"],
+        "description": "Validates rendering of different transaction types in feed"
+      },
+      {
+        "id": "TC-paginates public transaction feed",
+        "title": "paginates public transaction feed",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:14.583Z",
+        "requirements": ["REQ-FEED-PAGINATION"],
+        "userStories": ["US-FEED-PAGINATION"],
+        "tags": ["pagination", "public"],
+        "description": "Validates pagination functionality for public feed"
+      },
+      {
+        "id": "TC-paginates contacts transaction feed",
+        "title": "paginates contacts transaction feed",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:18.633Z",
+        "requirements": ["REQ-FEED-PAGINATION"],
+        "userStories": ["US-FEED-PAGINATION"],
+        "tags": ["pagination", "contacts"],
+        "description": "Validates pagination functionality for contacts feed"
+      },
+      {
+        "id": "TC-paginates personal transaction feed",
+        "title": "paginates personal transaction feed",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:22.821Z",
+        "requirements": ["REQ-FEED-PAGINATION"],
+        "userStories": ["US-FEED-PAGINATION"],
+        "tags": ["pagination", "personal"],
+        "description": "Validates pagination functionality for personal feed"
+      },
+      {
+        "id": "TC-filters public transaction feed by date range",
+        "title": "filters public transaction feed by date range",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:27.531Z",
+        "requirements": ["REQ-FEED-DATE-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "date-range", "public"],
+        "description": "Validates date range filtering for public feed"
+      },
+      {
+        "id": "TC-does not show public transactions for out of range date limits",
+        "title": "does not show public transactions for out of range date limits",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:31.958Z",
+        "requirements": ["REQ-FEED-DATE-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "date-range", "empty-state", "public"],
+        "description": "Validates empty state display for out of range dates in public feed"
+      },
+      {
+        "id": "TC-filters contacts transaction feed by date range",
+        "title": "filters contacts transaction feed by date range",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:36.856Z",
+        "requirements": ["REQ-FEED-DATE-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "date-range", "contacts"],
+        "description": "Validates date range filtering for contacts feed"
+      },
+      {
+        "id": "TC-does not show contacts transactions for out of range date limits",
+        "title": "does not show contacts transactions for out of range date limits",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:41.588Z",
+        "requirements": ["REQ-FEED-DATE-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "date-range", "empty-state", "contacts"],
+        "description": "Validates empty state display for out of range dates in contacts feed"
+      },
+      {
+        "id": "TC-filters personal transaction feed by date range",
+        "title": "filters personal transaction feed by date range",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:46.399Z",
+        "requirements": ["REQ-FEED-DATE-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "date-range", "personal"],
+        "description": "Validates date range filtering for personal feed"
+      },
+      {
+        "id": "TC-does not show personal transactions for out of range date limits",
+        "title": "does not show personal transactions for out of range date limits",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:51.110Z",
+        "requirements": ["REQ-FEED-DATE-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "date-range", "empty-state", "personal"],
+        "description": "Validates empty state display for out of range dates in personal feed"
+      },
+      {
+        "id": "TC-filters public transaction feed by amount range",
+        "title": "filters public transaction feed by amount range",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:45:56.134Z",
+        "requirements": ["REQ-FEED-AMOUNT-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "amount-range", "public"],
+        "description": "Validates amount range filtering for public feed"
+      },
+      {
+        "id": "TC-does not show public transactions for out of range amount limits",
+        "title": "does not show public transactions for out of range amount limits",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:00.870Z",
+        "requirements": ["REQ-FEED-AMOUNT-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "amount-range", "empty-state", "public"],
+        "description": "Validates empty state display for out of range amounts in public feed"
+      },
+      {
+        "id": "TC-filters contacts transaction feed by amount range",
+        "title": "filters contacts transaction feed by amount range",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:04.378Z",
+        "requirements": ["REQ-FEED-AMOUNT-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "amount-range", "contacts"],
+        "description": "Validates amount range filtering for contacts feed"
+      },
+      {
+        "id": "TC-does not show contacts transactions for out of range amount limits",
+        "title": "does not show contacts transactions for out of range amount limits",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:09.889Z",
+        "requirements": ["REQ-FEED-AMOUNT-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "amount-range", "empty-state", "contacts"],
+        "description": "Validates empty state display for out of range amounts in contacts feed"
+      },
+      {
+        "id": "TC-filters personal transaction feed by amount range",
+        "title": "filters personal transaction feed by amount range",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:13.675Z",
+        "requirements": ["REQ-FEED-AMOUNT-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "amount-range", "personal"],
+        "description": "Validates amount range filtering for personal feed"
+      },
+      {
+        "id": "TC-does not show personal transactions for out of range amount limits",
+        "title": "does not show personal transactions for out of range amount limits",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:19.504Z",
+        "requirements": ["REQ-FEED-AMOUNT-FILTER"],
+        "userStories": ["US-FEED-FILTERS"],
+        "tags": ["filters", "amount-range", "empty-state", "personal"],
+        "description": "Validates empty state display for out of range amounts in personal feed"
+      },
+      {
+        "id": "TC-mine feed only shows personal transactions",
+        "title": "mine feed only shows personal transactions",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:23.195Z",
+        "requirements": ["REQ-FEED-VISIBILITY"],
+        "userStories": ["US-FEED-VISIBILITY"],
+        "tags": ["visibility", "personal-feed", "critical-path"],
+        "description": "Validates personal feed shows only user transactions"
+      },
+      {
+        "id": "TC-first five items belong to contacts in public feed",
+        "title": "first five items belong to contacts in public feed",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:26.183Z",
+        "requirements": ["REQ-FEED-VISIBILITY"],
+        "userStories": ["US-FEED-VISIBILITY"],
+        "tags": ["visibility", "public-feed", "contacts", "critical-path"],
+        "description": "Validates contact transactions appear first in public feed"
+      },
+      {
+        "id": "TC-friends feed only shows contact transactions",
+        "title": "friends feed only shows contact transactions",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:46:29.517Z",
+        "requirements": ["REQ-FEED-VISIBILITY"],
+        "userStories": ["US-FEED-VISIBILITY"],
+        "tags": ["visibility", "friends-feed", "contacts", "critical-path"],
+        "description": "Validates friends feed shows only contact transactions"
+      },
+      {
+        "id": "TC-renders the user settings form",
+        "title": "renders the user settings form",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:47:06.129Z",
+        "requirements": ["REQ-USER-SETTINGS-UI", "REQ-USER-SETTINGS"],
+        "userStories": ["US-PROFILE-VIEW"],
+        "tags": ["ui", "render", "critical-path"],
+        "description": "Validates that user settings form is properly rendered and accessible"
+      },
+      {
+        "id": "TC-should display user setting form errors",
+        "title": "should display user setting form errors",
+        "type": "e2e",
+        "priority": "p2-high-value",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:47:08.576Z",
+        "requirements": ["REQ-USER-SETTINGS-VALIDATION", "REQ-FORM-VALIDATION"],
+        "userStories": ["US-PROFILE-VALIDATION"],
+        "tags": ["validation", "error-handling"],
+        "description": "Validates form field validation rules and error message display"
+      },
+      {
+        "id": "TC-updates first name, last name, email and phone number",
+        "title": "updates first name, last name, email and phone number",
+        "type": "e2e",
+        "priority": "p1-must-run",
+        "status": "passed",
+        "timestamp": "2025-01-02T16:47:14.951Z",
+        "requirements": ["REQ-USER-SETTINGS-UPDATE", "REQ-USER-PROFILE-SAVE"],
+        "userStories": ["US-PROFILE-EDIT"],
+        "tags": ["profile", "update", "critical-path"],
+        "description": "Validates successful profile information update functionality"
+      }
+    ]
+  },
+  "uncovered": {
+    "requirements": ["REQ-USER-PROFILE"],
+    "userStories": []
+  }
+}
